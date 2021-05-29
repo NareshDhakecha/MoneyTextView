@@ -1,0 +1,3 @@
+rootProject.name = "MoneyTextView"
+include ':app'
+include ':moneytextview'
