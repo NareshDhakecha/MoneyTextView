@@ -83,7 +83,7 @@ class MoneyTextView : View {
             mTextPaint.density,
             r.displayMetrics
         )
-        val typedArray: TypedArray = context.getTheme().obtainStyledAttributes(
+        val typedArray: TypedArray = context.theme.obtainStyledAttributes(
             attrs, R.styleable.MoneyTextView,
             0, R.style.MoneyTextViewDefaultStyle
         )
@@ -134,10 +134,11 @@ class MoneyTextView : View {
             var format = typedArray.getString(R.styleable.MoneyTextView_format)
             val decimalSeparator = typedArray.getString(R.styleable.MoneyTextView_decimalSeparator)
             val fontPath = typedArray.getString(R.styleable.MoneyTextView_fontPath)
+            var typeface  = Typeface.DEFAULT_BOLD
             if (fontPath != null) {
-                val typeface = Typeface.createFromAsset(context.assets, fontPath)
-                mTextPaint.typeface = typeface
+                typeface = Typeface.create(Typeface.createFromAsset(context.assets, fontPath), Typeface.BOLD)
             }
+            mTextPaint.typeface = typeface
             if (format == null) {
                 format = context.getString(R.string.default_format)
             }
